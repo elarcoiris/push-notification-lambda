@@ -15,6 +15,9 @@ The SAM CLI builds a docker image from a Dockerfile and then installs dependenci
 First, you will need to update the events/event.json file body field with the device token from your target destination.
 The token is only valid for the issuing app and for the purpose of receiving a push notification.
 
+This assumes that you have your own Apple Developer push certificate, or you have requested access to the author's .p8 file.
+The file is excluded in .gitignore for best practices, but you should have this value stored in Secrets Manager. That ideal implementation has been provided too.
+
 ```bash
 push-notification-lambda$ npm install
 push-notification-lambda$ npm run build
