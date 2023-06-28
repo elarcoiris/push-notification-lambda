@@ -13,10 +13,11 @@ const appleNotification = async (deviceToken) => {
         const keyId = process.env.APPLE_PN_KEY_ID;
         const teamId = process.env.APPLE_TEAM_ID;
         const p8 = process.env.AUTHP8;
+        const keyPath = process.env.KEY_PATH;
 
         const options = {
             token: {
-                key: p8,
+                key: keyPath,
                 keyId: keyId,
                 teamId: teamId
             },
