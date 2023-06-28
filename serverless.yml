@@ -1,0 +1,16 @@
+service: push-notification
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  region: ap-southeast-2
+
+functions:
+  PushNotification:
+    handler: src/app.lambdaHandler
+    timeout: 10
+    memorySize: 128
+    events:
+      - httpApi:
+          method: '*'
+          path: /notification

@@ -10,11 +10,15 @@ const { Provider, Notification } = require("@parse/node-apn");
 
 const appleNotification = async (deviceToken) => {
     try {
+        const keyId = process.env.APPLE_PN_KEY_ID;
+        const teamId = process.env.APPLE_TEAM_ID;
+        const p8 = process.env.AUTHP8;
+
         const options = {
             token: {
-                key: "./util/AuthKey_4RN3W3944L.p8",
-                keyId: "4RN3W3944L",
-                teamId: "7PY58KJ7Y2"
+                key: p8,
+                keyId: keyId,
+                teamId: teamId
             },
             production: false
         }

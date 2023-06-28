@@ -1,5 +1,5 @@
 {
-  "body": "{\"deviceToken\": \"3176f6e278f57e61275457d0c70533556fc93a04552950d55adddde6958a9e35\"}",
+  "body": "{\"deviceToken\": \"000000sdfsdfdsfdsfds0000sdfsdfsdf0sdfsd0f\"}",
   "resource": "/{proxy+}",
   "path": "/path/to/resource",
   "httpMethod": "POST",
