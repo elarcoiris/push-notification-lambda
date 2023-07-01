@@ -1,5 +1,5 @@
 const { appleNotification } = require("./service/appleNotification");
-const { onboard } = require("./service/onboard");
+const { createUser } = require("./service/onboard");
 
 let response;
 
@@ -29,7 +29,7 @@ const onboardHandler = async (event) => {
         let jsonBody = JSON.parse(event.body);
         let { id, deviceToken, email, firstName, lastName } = jsonBody;
 
-        await onboard(id, deviceToken, email, firstName, lastName);
+        await createUser(id, deviceToken, email, firstName, lastName);
 
         response = {
             'statusCode': 200,

@@ -4,8 +4,6 @@ const axios = require('axios');
 const queryString = require('query-string');
 var rand = require('csprng');
 const jwt = require('jsonwebtoken');
-const Sequelize = require('sequelize');
-const Op = Sequelize.Op;
 const fs = require("fs");
 
 const JWT_SECRET = process.env.JWT_SECRET;
@@ -66,26 +64,26 @@ module.exports = {
 
           tokenString = rand(160, 36);
           var user = {};
-          user = await User.findOne({
-            where: {
-              [Op.or]: [
-                {id: req.body.id},
-                {email: req.body.email}
-              ]
-            }
-          })
+        //   user = await User.findOne({
+        //     where: {
+        //       [Op.or]: [
+        //         {id: req.body.id},
+        //         {email: req.body.email}
+        //       ]
+        //     }
+        //   })
         
-          if (user) {
-            await user.update({
-                tokenString: tokenString,
-            })
-            if (user.deviceToken != req.body.deviceToken) {
-              await user.update({
-                  deviceToken: req.body.deviceToken
-              })
-            }
-          }
-          else {
+        //   if (user) {
+        //     await user.update({
+        //         tokenString: tokenString,
+        //     })
+        //     if (user.deviceToken != req.body.deviceToken) {
+        //       await user.update({
+        //           deviceToken: req.body.deviceToken
+        //       })
+        //     }
+        //   }
+        //   else {
             user = await User.create({
                 id: req.body.id,
                 deviceToken: req.body.deviceToken,
@@ -94,7 +92,7 @@ module.exports = {
                 lastName: req.body.lastName,
                 tokenString: tokenString
             })
-          }
+        //   }
 
             const token = createJwt(user);
             let userDetails = { id: user.id, email: user.email, firstName: user.firstName, lastName: user.lastName, token: token }
