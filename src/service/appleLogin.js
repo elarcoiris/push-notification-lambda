@@ -52,7 +52,7 @@ module.exports = {
         const requestBody = {
           grant_type: 'authorization_code',
           code: bearerToken,
-          client_id: CLIENT_ID,
+          client_id: clientId,
           client_secret: clientSecret
         }
         
