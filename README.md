@@ -36,6 +36,7 @@ push-notification-lambda$ npm start
 Setup your postman to send POST requests to:
 
 http://localhost:3000/dev/notification
+
 http://localhost:3000/dev/onboard
 
 Each function's route is defined in serverless.yml:
