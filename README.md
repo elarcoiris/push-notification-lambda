@@ -13,7 +13,7 @@ You will require an Apple Developer push certificate in the form of a .p8 file. 
 
 Ideally, your private keys should be stored in Secrets Manager, and an example of this implementation has also been provided.
 
-You will also need to have Serverless installed globally:
+If you don't already have Serverless, install it globally:
 
 ```bash
 npm install -g serverless
@@ -21,11 +21,11 @@ npm install -g serverless
 
 Create an .env.local file for env vars and values:
 
-APPLE_PN_KEY_ID,
+APPLE_PN_KEY_ID
 
-APPLE_TEAM_ID, 
+APPLE_TEAM_ID
 
-KEY_PATH, 
+KEY_PATH
 
 
 ## Run
