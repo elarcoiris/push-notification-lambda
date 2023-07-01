@@ -25,7 +25,7 @@ const createJwt = (user) => {
   return jwtToken
 }
 
-getClientSecret = () => {
+const getClientSecret = () => {
   const privateKey = fs.readFileSync(keyPath);
   const token = jwt.sign({}, privateKey, {
     algorithm: "ES256",
