@@ -27,6 +27,7 @@ APPLE_PN_KEY_ID,
 APPLE_TEAM_ID, 
 KEY_PATH, 
 
+## Run
 
 ```bash
 push-notification-lambda$ npm install
