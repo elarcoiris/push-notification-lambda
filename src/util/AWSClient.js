@@ -1,8 +1,9 @@
-const { config, SecretsManager } = require('aws-sdk');
+const { config, SecretsManager, DynamoDB } = require('aws-sdk');
 
-export class AWSClient {
+class AWSClient {
     
     secretsManager;
+    dynamoDB;
 
     constructor() {
         config.update({
@@ -10,6 +11,16 @@ export class AWSClient {
         });
 
         this.secretsManager = new SecretsManager();
+
+        this.DynamoDB = new DynamoDB.DocumentClient({
+            ...AWSClient(process.env.ENV === 'development' && {
+                endpoint: 'http:localhost:8008',
+                region: 'localhost',
+                accessKeyId: 'DEFAULT_ACCESS_KEY',
+                // deepcode ignore HardcodedNonCryptoSecret: Default values for local
+                secretAccessKey: 'DEFAULT_SECRET'
+            })
+        })
     }
 
     async getSecret(key) {
@@ -40,3 +51,4 @@ export class AWSClient {
         }
     }
 }
+module.exports = { AWSClient }

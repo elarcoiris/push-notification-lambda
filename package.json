@@ -5,12 +5,10 @@
   "main": "app.js",
   "scripts": {
     "test": "mocha ./src/tests/unit",
-    "clean": "rm -rf ./aws-sam/build",
-    "build": "sam build --profile personal --region ap-southeast-2",
-    "local": "sam local invoke --event events/event.json",
-    "sam:deploy": "sam deploy --profile personal --region ap-southeast-2",
-    "sam:rollback": "sam delete",
-    "serverless:deploy": "serverless deploy function -f PushNotification"
+    "deploy": "serverless deploy",
+    "deploy:push": "serverless deploy function -f PushNotification",
+    "deploy:onboard": "serverless deploy function -f OnboardUser",
+    "start": "serverless offline start"
   },
   "author": "Prue Phillips",
   "license": "ISC",
@@ -22,6 +20,8 @@
   "devDependencies": {
     "chai": "^4.3.7",
     "mocha": "^10.2.0",
+    "serverless-dotenv-plugin": "^6.0.0",
+    "serverless-dynamodb-local": "^0.2.40",
     "serverless-offline": "^12.0.4"
   }
 }

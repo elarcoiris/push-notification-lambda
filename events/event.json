@@ -1,7 +1,7 @@
 {
-  "body": "{\"deviceToken\": \"000000sdfsdfdsfdsfds0000sdfsdfsdf0sdfsd0f\"}",
+  "body": "{\"deviceToken\": \"replace\"}",
   "resource": "/{proxy+}",
-  "path": "/path/to/resource",
+  "path": "/notification",
   "httpMethod": "POST",
   "isBase64Encoded": false,
   "queryStringParameters": {

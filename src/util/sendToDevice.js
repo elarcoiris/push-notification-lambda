@@ -1,35 +1,46 @@
-// import { AWSClient } from "./AWSClient";
-// const { appleNotification } = require("../service/appleNotification");
+const { AWSClient } = require("./AWSClient");
+const { appleNotification } = require("../service/appleNotification");
 
-// const filterOn = (obj, key, value) => obj.filter(v => v[key] === value);
+const filterOn = (obj, key, value) => obj.filter(v => v[key] === value);
 
-// export const sendToDevice = async (data) => {
-    // try {
-    //     const devices = []
+export const sendToDevice = async (data) => {
+    const awsClient = new AWSClient();
+    const tableName = "users";
+    try {
+        const devices = await awsClient.dynamoDB.query({
+            TableName: tableName,
+            IndexName: "id",
+            KeyConditionExpression: "id = :id",
+            ExpressionAttributeValues: {
+                ":id": data.id
+            }
+        }).promise();
 
-    //     const appleDevices = filterOn(devices, 'field', 'value');
-    //     const mapApple = appleDevices(val => val.pushToken);
-    //     const appleSet = new Set(mapApple);
-    //     const uniqueAppleValues = [...appleSet];
+        const values = devices.Items ? devices.Items:[];
 
-    //     if(uniqueAppleValues.length > 0) {
-    //         await sendPushNotification(uniqueAppleValues);
-    //     }
-    // }
-    // catch (error) {
-    //     console.error("There was an issue sending the push notification: ", error);
-    // }
-// }
+        // Filter settings
+        const registeredValues = filterOn(values, 'status', 'registered');
+        const appleDevices = filterOn(registeredValues, 'field', 'value');
 
-// const sendPushNotification = async (uniqueAppleValues) => {
-    // Normally, we would have the key saved in Secrets Manager
-    // But I am providing my own developer certificate as a file
-    // const awsHelper = new AWSClient();
-    // const key = await awsHelper.getSecret("APN_KEY_PEM") as string;
-    // const cert = await awsHelper.getSecret("APN_CERT_PEM") as string;
-    // for(let i =1; i < uniqueAppleValues.length; i++) {
-        // await appleNotification(uniqueAppleValues[i], key, cert)
-    //     await appleNotification(uniqueAppleValues[i])
 
-    // }
-// }
+        const mapApple = appleDevices(val => val.pushToken);
+        const appleSet = new Set(mapApple);
+        const uniqueAppleValues = [...appleSet];
+
+        if(uniqueAppleValues.length > 0) {
+            await sendPushNotification(uniqueAppleValues);
+        }
+    }
+    catch (error) {
+        console.error("There was an issue sending the push notification: ", error);
+    }
+}
+
+const sendPushNotification = async (uniqueAppleValues) => {
+    const awsHelper = new AWSClient();
+    const key = await awsHelper.getSecret("APN_KEY_PEM");
+    const cert = await awsHelper.getSecret("APN_CERT_PEM");
+    for(let i =1; i < uniqueAppleValues.length; i++) {
+        await appleNotification(uniqueAppleValues[i], key, cert)
+    }
+}

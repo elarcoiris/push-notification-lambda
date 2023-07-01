@@ -1,0 +1,10 @@
+{
+    "body": "{\"id\": \"123456789\",\"deviceToken\": \"replace\"}",
+    "resource": "/{proxy+}",
+    "path": "/onboard",
+    "httpMethod": "POST",
+    "isBase64Encoded": false,
+    "queryStringParameters": {
+      "foo": "bar"
+    }
+}

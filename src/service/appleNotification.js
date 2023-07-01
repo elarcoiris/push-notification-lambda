@@ -8,12 +8,23 @@ const { Provider, Notification } = require("@parse/node-apn");
         //     production: true
         // }
 
+const PushType = {
+    liveActivity: "liveactivity",
+    alert: "alert"
+}
+
+const PushTopic = {
+    liveActivity: "",
+    alert: "tech.inspirare.POC"
+}
+
 const appleNotification = async (deviceToken) => {
     try {
         const keyId = process.env.APPLE_PN_KEY_ID;
         const teamId = process.env.APPLE_TEAM_ID;
-        const p8 = process.env.AUTHP8;
         const keyPath = process.env.KEY_PATH;
+
+        // const keys = await this.certificateService.getKeys();
 
         const options = {
             token: {
@@ -27,11 +38,12 @@ const appleNotification = async (deviceToken) => {
         const apnProvider = new Provider(options);
 
         const note = new Notification();
+        note.pushType = PushType.alert;
         note.expiry = Math.floor(Date.now() / 10000) + 3600;
         note.badge = 1;
         note.sound = "ping.aiff";
         note.alert = "Test Notification"
-        note.topic = "tech.inspirare.POC"
+        note.topic = PushTopic.alert
 
         // We can add custom fields to display personalised data
         // note.payload = { "messageFrom": "name" }
