@@ -22,9 +22,10 @@ npm install -g serverless
 ## Settings
 
 You should create your own .env.local file for env vars:
-APPLE_PN_KEY_ID
-APPLE_TEAM_ID
-KEY_PATH
+
+APPLE_PN_KEY_ID, 
+APPLE_TEAM_ID, 
+KEY_PATH, 
 
 
 ```bash
@@ -33,6 +34,7 @@ push-notification-lambda$ npm start
 ```
 
 Setup your postman to send POST requests to:
+
 http://localhost:3000/dev/notification
 http://localhost:3000/dev/onboard
 
