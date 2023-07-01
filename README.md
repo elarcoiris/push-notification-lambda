@@ -19,11 +19,14 @@ You will also need to have Serverless installed globally:
 npm install -g serverless
 ```
 
-Create a .env.local file for env vars and values:
+Create an .env.local file for env vars and values:
 
-APPLE_PN_KEY_ID, 
+APPLE_PN_KEY_ID,
+
 APPLE_TEAM_ID, 
+
 KEY_PATH, 
+
 
 ## Run
 
