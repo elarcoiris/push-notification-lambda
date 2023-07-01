@@ -27,6 +27,13 @@ APPLE_TEAM_ID
 
 KEY_PATH
 
+JWT_SECRET
+
+Generate a random base64 string for the JWT_SECRET:
+
+```bash
+openssl rand -base64 32
+```
 
 ## Run
 

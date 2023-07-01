@@ -27,9 +27,9 @@ const lambdaHandler = async (event) => {
 const onboardHandler = async (event) => {
     try {
         let jsonBody = JSON.parse(event.body);
-        let { id, deviceToken } = jsonBody;
+        let { id, deviceToken, email, firstName, lastName } = jsonBody;
 
-        await onboard(id, deviceToken);
+        await onboard(id, deviceToken, email, firstName, lastName);
 
         response = {
             'statusCode': 200,

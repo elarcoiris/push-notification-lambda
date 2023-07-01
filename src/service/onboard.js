@@ -8,9 +8,9 @@ const createUser = async (id, deviceToken, email, firstName, lastName) => {
         Item: {
             id: { S: id },
             deviceToken: { S: deviceToken },
-            // email: { S: email },
-            // firstName: { S: firstName },
-            // lastName: { S: lastName }
+            email: { S: email },
+            firstName: { S: firstName },
+            lastName: { S: lastName }
         }
     }).promise()
     console.debug('User insert result: ', JSON.stringify(user));
