@@ -6,8 +6,13 @@ let response;
 const lambdaHandler = async (event) => {
     try {
         let jsonBody = JSON.parse(event.body);
-        let token = jsonBody.deviceToken;
-        await appleNotification(token);
+
+        let deviceToken;
+        if (jsonBody.deviceToken) {
+            deviceToken = jsonBody.deviceToken
+        }
+
+        await appleNotification(deviceToken);
 
         response = {
             'statusCode': 200,
@@ -27,9 +32,9 @@ const lambdaHandler = async (event) => {
 const onboardHandler = async (event) => {
     try {
         let jsonBody = JSON.parse(event.body);
-        let { id, deviceToken, email, firstName, lastName } = jsonBody;
+        let { appleId, deviceToken, pkPushToken, email, firstName, lastName } = jsonBody;
 
-        await createUser(id, deviceToken, email, firstName, lastName);
+        await createUser(appleId, deviceToken, pkPushToken, email, firstName, lastName);
 
         response = {
             'statusCode': 200,

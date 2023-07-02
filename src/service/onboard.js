@@ -1,13 +1,14 @@
 const { AWSClient } = require("../util/AWSClient");
 
-const createUser = async (id, deviceToken, email, firstName, lastName) => {
+const createUser = async (appleId, deviceToken, pkPushToken, email, firstName, lastName) => {
     const awsClient = new AWSClient();
     const tableName = "users";
     const user = await awsClient.dynamoDB.put({
         TableName: tableName,
         Item: {
-            id: { S: id },
+            appleId: { S: appleId },
             deviceToken: { S: deviceToken },
+            pkPushToken : { S: pkPushToken },
             email: { S: email },
             firstName: { S: firstName },
             lastName: { S: lastName }

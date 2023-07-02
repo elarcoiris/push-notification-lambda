@@ -15,7 +15,7 @@ const keyPath = process.env.KEY_PATH;
 
 const createJwt = (user) => {
   const jwtToken = jwt.sign({
-      id: user.dataValues.id,
+      appleId: user.dataValues.appleId,
       firstName: user.dataValues.firstName,
       email: user.dataValues.email,
       tokenString: user.dataValues.tokenString
@@ -85,8 +85,9 @@ module.exports = {
         //   }
         //   else {
             user = await User.create({
-                id: req.body.id,
+                appleId: req.body.appleId,
                 deviceToken: req.body.deviceToken,
+                pkPushToken: req.body.pkPushToken,
                 email: req.body.email,
                 firstName: req.body.firstName,
                 lastName: req.body.lastName,
@@ -95,7 +96,7 @@ module.exports = {
         //   }
 
             const token = createJwt(user);
-            let userDetails = { id: user.id, email: user.email, firstName: user.firstName, lastName: user.lastName, token: token }
+            let userDetails = { appleId: user.appleId, email: user.email, firstName: user.firstName, lastName: user.lastName, token: token }
             res.status(200).send(userDetails);
         }
         catch(error) {
