@@ -48,6 +48,12 @@ http://localhost:3000/dev/notification
 
 http://localhost:3000/dev/onboard
 
+https://{apigatewayid}.execute-api.ap-southeast-2.amazonaws.com/dev/notification
+
+https://{apigatewayid}.execute-api.ap-southeast-2.amazonaws.com/dev/onboard
+
+Note that the body format changes for invoking the functions through API Gateway.
+
 Each function's route is defined in serverless.yml:
 
 ```yaml
