@@ -12,10 +12,6 @@ provider:
   region: ap-southeast-2
   timeout: 10
   memorySize: 512
-  environment:
-    APPLE_PN_KEY_ID: "replace"
-    APPLE_TEAM_ID: "replace"
-    KEY_PATH: "replace"
 
 functions:
   PushNotification:
