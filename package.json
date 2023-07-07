@@ -17,7 +17,7 @@
     "aws-sdk": "^2.1412.0",
     "axios": "^1.4.0",
     "csprng": "^0.1.2",
-    "jsonwebtoken": "^9.0.0",
+    "jsonwebtoken": "^9.0.1",
     "query-string": "^8.1.0",
     "serverless": "^3.33.0"
   },
