@@ -12,15 +12,7 @@ class AWSClient {
 
         this.secretsManager = new SecretsManager();
 
-        this.DynamoDB = new DynamoDB.DocumentClient({
-            ...AWSClient(process.env.ENV === 'development' && {
-                endpoint: 'http:localhost:8008',
-                region: 'localhost',
-                accessKeyId: 'DEFAULT_ACCESS_KEY',
-                // deepcode ignore HardcodedNonCryptoSecret: Default values for local
-                secretAccessKey: 'DEFAULT_SECRET'
-            })
-        })
+        this.dynamoDB = new DynamoDB.DocumentClient({});
     }
 
     async getSecret(key) {
