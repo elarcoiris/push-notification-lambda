@@ -14,7 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "@parse/node-apn": "^6.0.1",
-    "aws-sdk": "^2.1622.0",
+    "aws-sdk": "^2.1623.0",
     "axios": "^1.7.0",
     "csprng": "^0.1.2",
     "jsonwebtoken": "^9.0.2",
