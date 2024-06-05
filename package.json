@@ -19,7 +19,7 @@
     "csprng": "^0.1.2",
     "jsonwebtoken": "^9.0.2",
     "query-string": "^9.0.0",
-    "serverless": "^3.38.0"
+    "serverless": "^3.39.0"
   },
   "devDependencies": {
     "chai": "^5.1.1",
