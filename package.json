@@ -13,7 +13,7 @@
   "author": "Prue Phillips",
   "license": "ISC",
   "dependencies": {
-    "@parse/node-apn": "^6.2.1",
+    "@parse/node-apn": "^6.3.0",
     "aws-sdk": "^2.1692.0",
     "axios": "^1.7.9",
     "csprng": "^0.1.2",
