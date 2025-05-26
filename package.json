@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "chai": "^5.2.0",
-    "mocha": "^11.4.0",
+    "mocha": "^11.5.0",
     "serverless-dotenv-plugin": "^6.0.0",
     "serverless-offline": "^14.4.0"
   }
