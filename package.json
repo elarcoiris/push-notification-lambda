@@ -15,7 +15,7 @@
   "dependencies": {
     "@parse/node-apn": "^7.0.1",
     "aws-sdk": "^2.1693.0",
-    "axios": "^1.13.2",
+    "axios": "^1.13.3",
     "csprng": "^0.1.2",
     "jsonwebtoken": "^9.0.3",
     "query-string": "^9.3.1",
