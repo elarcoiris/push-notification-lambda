@@ -18,7 +18,7 @@
     "axios": "^1.16.1",
     "csprng": "^0.1.2",
     "jsonwebtoken": "^9.0.3",
-    "query-string": "^9.3.1",
+    "query-string": "^9.4.0",
     "serverless": "^4.37.0"
   },
   "devDependencies": {
